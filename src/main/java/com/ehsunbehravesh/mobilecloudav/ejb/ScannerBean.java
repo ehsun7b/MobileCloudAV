@@ -20,7 +20,7 @@ import javax.ejb.LocalBean;
 public class ScannerBean {
 
   public ScanResult scan(final File file) {
-    ScanResult result = new ScanResult();
+    ScanResult result = new ScanResult();        
     
     return result;
   }
