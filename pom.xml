@@ -9,6 +9,14 @@
 
   <name>MobileCloudAV</name>
 
+  <developers>
+    <developer>
+      <id>ehusn</id>
+      <name>Ehsun Behravesh</name>
+      <email>post@ehsunbehravesh.com</email>
+    </developer>
+  </developers>
+  
   <properties>
     <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
