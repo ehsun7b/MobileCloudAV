@@ -6,8 +6,10 @@
 package com.ehsunbehravesh.mobilecloudav.ejb;
 
 import com.ehsunbehravesh.mobilecloudav.result.ScanResult;
+import com.ehsunbehravesh.mobilecloudav.utils.ScanCLParser;
 import com.ehsunbehravesh.mobilecloudav.utils.SystemCommand;
 import java.io.File;
+import java.util.Map;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import org.apache.log4j.Logger;
@@ -27,6 +29,16 @@ public class ScannerBean {
     ScanResult result = new ScanResult();
     String string = SystemCommand.cmdExec("scancl ".concat(file.getAbsolutePath()));
     logger.log(Priority.INFO, "**** scan result: ".concat(string));
+    ScanCLParser parser = new ScanCLParser(string);
+    Map<String, Object> parsed = parser.parse();
+    int infected = (int) parsed.get("infected");
+    
+    if (infected <= 0) {
+      result.setInfected(false);
+    } else {
+      result.setInfected(true);
+    }
+    
     return result;
   }
 
