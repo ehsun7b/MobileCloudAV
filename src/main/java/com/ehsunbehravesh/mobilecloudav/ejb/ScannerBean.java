@@ -9,9 +9,10 @@ import com.ehsunbehravesh.mobilecloudav.result.ScanResult;
 import com.ehsunbehravesh.mobilecloudav.utils.ScanCLParser;
 import com.ehsunbehravesh.mobilecloudav.utils.SystemCommand;
 import java.io.File;
+import java.util.Date;
 import java.util.Map;
-import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import org.apache.log4j.Logger;
 import org.apache.log4j.Priority;
 
@@ -27,6 +28,7 @@ public class ScannerBean {
 
   public ScanResult scan(final File file) {
     ScanResult result = new ScanResult();
+    result.setReceiveRequestTime(new Date().getTime());
     String string = SystemCommand.cmdExec("scancl ".concat(file.getAbsolutePath()));
     logger.log(Priority.INFO, "**** scan result: ".concat(string));
     ScanCLParser parser = new ScanCLParser(string);
@@ -39,6 +41,7 @@ public class ScannerBean {
       result.setInfected(true);
     }
     
+    result.setFinishedScanTime(new Date().getTime());
     return result;
   }
 

@@ -14,6 +14,24 @@ public class ScanResult {
   private boolean infected;
   private List<MalwareDescription> malwares;
   private ByteBuffer cleanedContent;
+  private Long receiveRequestTime;
+  private Long finishedScanTime;
+
+  public Long getReceiveRequestTime() {
+    return receiveRequestTime;
+  }
+
+  public void setReceiveRequestTime(Long receiveRequestTime) {
+    this.receiveRequestTime = receiveRequestTime;
+  }
+
+  public Long getFinishedScanTime() {
+    return finishedScanTime;
+  }
+
+  public void setFinishedScanTime(Long finishedScanTime) {
+    this.finishedScanTime = finishedScanTime;
+  }
 
   public ScanResult() {
   }
