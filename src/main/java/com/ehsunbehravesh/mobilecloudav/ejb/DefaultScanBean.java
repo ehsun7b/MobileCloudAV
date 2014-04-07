@@ -33,7 +33,18 @@ public class DefaultScanBean {
     }
     
     return result;
-  }  
+  }
+  
+  public ScanResult scanFile(File file) {
+    ScanResult result = new ScanResult();
+    try {      
+      result = scanner.scan(file);
+    } catch (Exception ex) {
+      logger.log(Priority.FATAL, ex.getMessage(), ex);      
+    }
+    
+    return result;
+  }
   
   public ScanResult cleanBytes(final Byte[] content) {
     ScanResult result = new ScanResult();
